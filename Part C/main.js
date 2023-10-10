@@ -16,3 +16,49 @@ function is_same_suite(cards)
 
   return true;
 }
+
+
+
+
+function sort_cards(cards)
+{
+  var card_ids = cards.map(x=>x.code.split("")[0]);
+  var ranks = 
+  {
+    "A": 14,
+    "K": 13,
+    "Q": 12,
+    "J": 11
+  }
+
+  card_ids = card_ids.map(x=>
+  {
+    if(Number.isInteger(parseInt(x)))
+    {
+      return parseInt(x);
+    }
+    return x;
+  });
+
+  card_ids.sort((a, b) =>
+  {
+    if (ranks[a] && ranks[b])
+    {
+      return ranks[a] - ranks[b];
+    }
+
+    else if (ranks[a])
+    {
+      return ranks[a] - b;
+    }
+
+    else if (ranks[b])
+    {
+      return a - ranks[b];
+    }
+
+    else return a - b;
+  });
+
+  return card_ids;
+}
