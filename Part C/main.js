@@ -1,6 +1,22 @@
 const url = 'https://deckofcardsapi.com/api/deck/new/shuffle/';
 
+//making the request
+fetch(url).then(async (response) => 
+{
+  var deck_obj = await response.json();
+  var cards_req = await fetch( 'https://deckofcardsapi.com/api/deck/' + deck_obj.deck_id + '/draw/?count=5' );
+  var cards_obj = await cards_req.json();
+  var images = "";
+  console.log(cards_obj.cards);
 
+  // image tags
+  for (var i = 0; i < cards_obj.cards.length; i++)
+  {
+    images += "<img src='" + cards_obj.cards[i].image + "'/>";
+  }
+      
+  document.querySelector("body").innerHTML = images + "<br>" + "<span>" + highest_poker_hand(cards_obj.cards) + "</span>";
+});
 
 function is_same_suite(cards)
 {
