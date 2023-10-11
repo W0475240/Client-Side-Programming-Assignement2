@@ -18,6 +18,18 @@ fetch(url).then(async (response) =>
   document.querySelector("body").innerHTML = images + "<br>" + "<span>" + highest_poker_hand(cards_obj.cards) + "</span>";
 });
 
+function highest_poker_hand(cards)
+{
+    var card_ids = sort_cards(cards);
+    console.log(card_ids);
+
+    // if the deck is royal flush
+    if(is_same_suite(cards) && "A".includes(card_ids) && "K".includes(card_ids) && "Q".includes(card_ids) && "J".includes(card_ids) && "10".includes(card_ids))
+      return "Royal flush";
+
+
+}
+
 function is_same_suite(cards)
 {
   var first_card_suite = cards[0].code.split("")[1]; 
@@ -32,8 +44,6 @@ function is_same_suite(cards)
 
   return true;
 }
-
-
 
 
 function sort_cards(cards)
