@@ -31,11 +31,14 @@ function highest_poker_hand(cards)
     if(is_same_suite(cards) && card_ids[1] == card_ids[0] + 1 && card_ids[2] == card_ids[1] + 1 && card_ids[3] == card_ids[2] + 1 && card_ids[4] == card_ids[3] + 1)
       return "Straight flush";
 
-   
+    // if the deck is four of a kind
+    for (let i=0;i<2;i++) if ( card_ids[i] == card_ids[i+1] && card_ids[i+1] == card_ids[i+2] && card_ids[i+2] == card_ids[i+3]) return 'Four of a Kind';
+
 
 
 }
 
+// 
 function is_same_suite(cards)
 {
   var first_card_suite = cards[0].code.split("")[1]; 
