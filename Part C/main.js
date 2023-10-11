@@ -27,6 +27,12 @@ function highest_poker_hand(cards)
     if(is_same_suite(cards) && "A".includes(card_ids) && "K".includes(card_ids) && "Q".includes(card_ids) && "J".includes(card_ids) && "10".includes(card_ids))
       return "Royal flush";
 
+    // if the deck is straight flush
+    if(is_same_suite(cards) && card_ids[1] == card_ids[0] + 1 && card_ids[2] == card_ids[1] + 1 && card_ids[3] == card_ids[2] + 1 && card_ids[4] == card_ids[3] + 1)
+      return "Straight flush";
+
+   
+
 
 }
 
