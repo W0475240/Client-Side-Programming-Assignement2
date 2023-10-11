@@ -34,6 +34,12 @@ function highest_poker_hand(cards)
     // if the deck is four of a kind
     for (let i=0;i<2;i++) if ( card_ids[i] == card_ids[i+1] && card_ids[i+1] == card_ids[i+2] && card_ids[i+2] == card_ids[i+3]) return 'Four of a Kind';
 
+    // if the deck is full house
+    if ((card_ids[0] == card_ids[1] && card_ids[1] == card_ids[2] && card_ids[3] == card_ids[4]) || (card_ids[0] == card_ids[1] && card_ids[2] == card_ids[3] && card_ids[3] == card_ids[4])) return 'Full House';
+
+    // if the deck is flush
+    if(is_same_suite(cards))
+      return "Flush";
 
 
 }
