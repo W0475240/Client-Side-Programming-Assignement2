@@ -41,10 +41,26 @@ function highest_poker_hand(cards)
     if(is_same_suite(cards))
       return "Flush";
 
+    // if the deck is straight
+    if(card_ids[1] == card_ids[0] + 1 && card_ids[2] == card_ids[1] + 1 && card_ids[3] == card_ids[2] + 1 && card_ids[4] == card_ids[3] + 1)
+      return "Straight";
+
+    // if the deck is three of a kind
+    for (let i=0;i<3;i++) if (card_ids[i] == card_ids[i+1] && card_ids[i+1] == card_ids[i+2]) return 'Three of a Kind';
+
+    // if the deck is two pair
+    if ((card_ids[0] == card_ids[1] && card_ids[2] == card_ids[3]) || (card_ids[0] == card_ids[1] && card_ids[3] == card_ids[4]) || (card_ids[1] == card_ids[2] && card_ids[3] == card_ids[4])) 
+      return 'Two Pair';
+
+    // if the deck is pair
+    for(var i=0;i<4;i++) if(card_ids[i] == card_ids[i+1]) return "Pair";
+
+    // if none of above
+    return "High card";
+
 
 }
 
-// 
 function is_same_suite(cards)
 {
   var first_card_suite = cards[0].code.split("")[1]; 
